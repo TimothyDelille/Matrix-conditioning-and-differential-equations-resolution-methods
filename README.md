@@ -1,3 +1,8 @@
+# Iterative gradient methods for linear systems resolution
+
+* Conjugate Gradient Method
+* Descent Gradient Method and comparison
+
 # Matrix conditioning
 
 * Condition number of Wilson's matrix and Hilbert's matrix
