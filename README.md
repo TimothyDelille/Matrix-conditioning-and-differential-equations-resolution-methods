@@ -1,4 +1,4 @@
-# Iterative gradient methods for linear systems resolution
+# Iterative gradient methods for convex optimization problems
 
 * Conjugate Gradient Method
 * Descent Gradient Method and comparison
