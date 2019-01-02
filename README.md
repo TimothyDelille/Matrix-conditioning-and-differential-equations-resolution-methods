@@ -1,5 +1,6 @@
-# Iterative gradient methods for convex optimization problems
-
+# Convex optimization problems
+* Simulated Annealing in the framework of the Travelling Salesman Problem
+## Iterative gradient methods
 * Conjugate Gradient Method
 * Descent Gradient Method and comparison
 
