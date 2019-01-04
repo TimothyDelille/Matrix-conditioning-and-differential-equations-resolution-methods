@@ -1,6 +1,6 @@
-# Convex optimization problems
+# Convex optimization algorithms
 * Simulated Annealing in the framework of the Travelling Salesman Problem
-## Iterative gradient methods
+* BGFS algorithm and Newton algorithm applied to Rosenbrock's function
 * Conjugate Gradient Method
 * Descent Gradient Method and comparison
 
