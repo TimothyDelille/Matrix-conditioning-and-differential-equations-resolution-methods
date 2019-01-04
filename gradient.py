@@ -58,12 +58,12 @@ def conjugate(x0,fonction,tol=1.0e-10,itermax=10000):
         k+=1
         #----- ho(k) -----
         rho = -np.dot(gradient(A,b,xx[-1]).T,direction)/np.vdot(np.dot(A,direction),direction)
+        beta=np.vdot(np.dot(A,gradient(A,b,xx[-1])),direction)/np.vdot(np.dot(A,direction),direction)
 
         #----- x(k+1) -----
         xx.append(xx[-1]+rho*direction)
         
         #----- nouvelle direction de descente d(x+1) -----
-        beta=np.vdot(np.dot(A,gradient(A,b,xx[-1])),direction)/np.vdot(np.dot(A,direction),direction)
         direction = -gradient(A,b,xx[-1])+beta*direction
 
         #----- residu r(k+1) -----
