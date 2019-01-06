@@ -1,19 +1,19 @@
 # coding: cp1252
 """
-Le probème est celui dit du "voyageur de commerce" pour lequel un voyageur de commerce doit se rendre dans une
-série de ville et cherche à minimiser la distance totale parcourue.
+Le probÃ¨me est celui dit du "voyageur de commerce" pour lequel un voyageur de commerce doit se rendre dans une
+sÃ©rie de ville et cherche Ã  minimiser la distance totale parcourue.
 
 Ici, on impose au voyageur de partir de Paris et d'y revenir.
 
-Pour n villes à visiter, il y a donc n! parcours possibles. La fonction coût est donc définie comme la
-distance totale parcourue par le voyageur de commerce. Attention de bien prendre en compte le départ et le
+Pour n villes Ã  visiter, il y a donc n! parcours possibles. La fonction coÃ»t est donc dÃ©finie comme la
+distance totale parcourue par le voyageur de commerce. Attention de bien prendre en compte le dÃ©part et le
 retour de et vers Paris.
 
-Le travail demandé consiste à trouver l'ordre dans lequel le voyageur de commerce doit parcourir les villes
-pour minimiser le trajet qu'il a à effecuter. Pour ce faire, on utilise deux méthodes :
-  * une méthode "brute force" pour laquelle vous calculerez tous les trajets possibles et sélectionnerez le
+Il s'agit de trouver l'ordre dans lequel le voyageur de commerce doit parcourir les villes
+pour minimiser le trajet qu'il a Ã  effecuter. Pour ce faire, on utilise deux mÃ©thodes :
+  * une mÃ©thode "brute force" pour laquelle vous calculerez tous les trajets possibles et sÃ©lectionnerez le
     plus court
-  * la méthode du recuit simulé
+  * la mÃ©thode du recuit simulÃ©
 """
 ############################
 ##### IMPORTED MODULES #####
@@ -48,9 +48,9 @@ class cities():
         Methode d'ajout d'une ville au dictionnaire.
 
         Entrees :
-          * nom : nom de la ville, chaine de caractère
-          * xx : coordonnée en x par rapport à Paris
-          * yy : coordonnée en y par rapport à Paris
+          * nom : nom de la ville, chaine de caractÃ¨re
+          * xx : coordonnÃ©e en x par rapport Ã  Paris
+          * yy : coordonnÃ©e en y par rapport Ã  Paris
         """
         self.infos[nom]={'x':float(xx), 'y':float(yy)}
 
@@ -59,14 +59,14 @@ class cities():
 ################################
 def cost_function(city_list, city_dict):
     """
-    Fonction coût à minimiser. Pour une liste de villes donnée en entrée, la fonction calcule la distance à
-    parcourir pour rallier toutes ces villes une à une. Attention, la fonction prend en compte la première
-    distance de Paris et la dernière distance vers Paris.
+    Fonction coÃ»t Ã  minimiser. Pour une liste de villes donnÃ©e en entrÃ©e, la fonction calcule la distance Ã 
+    parcourir pour rallier toutes ces villes une Ã  une. Attention, la fonction prend en compte la premiÃ¨re
+    distance de Paris et la derniÃ¨re distance vers Paris.
 
-    Entrée :
-      * city_list : liste ordonnée des villes à parcourir, liste python
+    EntrÃ©e :
+      * city_list : liste ordonnÃ©e des villes Ã  parcourir, liste python
       * city_dict : dictionnaire des villes contenant les informations parmettant de
-                    calculer les distances à parcourir, instance de la classe cities
+                    calculer les distances Ã  parcourir, instance de la classe cities
 
     Sortie :
       * la distance parcourue, float python
@@ -86,38 +86,36 @@ def cost_function(city_list, city_dict):
 
 def compute_new_candidate(list_in):
     """
-    Fonction associée à la méthode de recuit simulé permettant de calculer un nouveau trajet candidat.
+    Fonction associÃ©e Ã  la mÃ©thode de recuit simulÃ© permettant de calculer un nouveau trajet candidat.
 
-    Entrée :
-      * list_in : une liste non ordonnée des villes à visiter par le voyageur de commerce, liste python
+    EntrÃ©e :
+      * list_in : une liste non ordonnÃ©e des villes Ã  visiter par le voyageur de commerce, liste python
 
     Sortie :
-      * une liste "aléatoire" ordonnée des villes à visiter par le voyageur de commerce, liste python
+      * une liste "alÃ©atoire" ordonnÃ©e des villes Ã  visiter par le voyageur de commerce, liste python
     """
     return np.random.permutation(np.asarray(list_in).tolist())
     
 def compute_Temp(h,k,ind,Temp):
     """
-    Fonction associée à la méthode de recuit simulé. Permet de calculer la nouvelles valeur de
-    température à la fin d'une itération (voir algorithme du cours).
+    Fonction associÃ©e Ã  la mÃ©thode de recuit simulÃ©. Permet de calculer la nouvelles valeur de
+    tempÃ©rature Ã  la fin d'une itÃ©ration (voir algorithme du cours).
 
-    Entrée :
-      * h>0 : paramètre du calcul, float python. Plus h est petit, plus l'algorithme risque de rester
-              piéger dans un minimum local. Plus h est grand, plus longue est la convergence de
+    EntrÃ©e :
+      * h>0 : paramÃ¨tre du calcul, float python. Plus h est petit, plus l'algorithme risque de rester
+              piÃ©ger dans un minimum local. Plus h est grand, plus longue est la convergence de
               l'algorithme
-      * k : paramètre de l'algorithme, integer python
-      * ind : itération courante de l'algorithme, integer python
-      * Temp : température courante de l'algorithme
+      * k : paramÃ¨tre de l'algorithme, integer python
+      * ind : itÃ©ration courante de l'algorithme, integer python
+      * Temp : tempÃ©rature courante de l'algorithme
 
     Sortie : 
-      * nouvelle valeur du paramètre k de l'algorithme, integer python
-      * nouvelle valeur de température
+      * nouvelle valeur du paramÃ¨tre k de l'algorithme, integer python
+      * nouvelle valeur de tempÃ©rature
     """
-#    print 'k:',k ,'   h:',h,' c1',np.exp((k-1)*h),' c2:',np.exp(k*h) ,'temp:' ,Temp ,' ind:' ,ind
-#    plt.pause(0.01)
     while ind <= np.exp((k-1)*h) or ind>np.exp(k*h):
          k+=1
-#         print k  
+ 
          Temp=1.0/k     
     return k,Temp 
 
@@ -126,14 +124,14 @@ def compute_Temp(h,k,ind,Temp):
 ##################
 ##### SCRIPT #####
 ##################
-##### Paramètres #####
+##### ParamÃ¨tres #####
 #***** Dictionnaire des villes *****
 dico=cities()
 
-#***** Liste non ordonnée des villes à parcourir *****
+#***** Liste non ordonnÃ©e des villes Ã  parcourir *****
 parcours=['Marseille','Lyon','Rennes','Lille','Orleans','Strasbourg','Metz']
 
-###### Résolution du problème en force brute #####
+###### RÃ©solution du problÃ¨me en force brute #####
 print "\n ##### Resolution du probleme en force brute #####"
 
 
@@ -144,7 +142,7 @@ trajets=list(itertools.permutations(parcours))
 
 print 'Nombre de trajets etudies : ',len(trajets)
 
-#***** Calcul de la fonction coût pour chaque permutation *****
+#***** Calcul de la fonction coÃ»t pour chaque permutation *****
 couts=np.zeros(len(trajets))
 for j,k in enumerate(trajets):
    couts[j]=cost_function(k, dico)
@@ -154,29 +152,29 @@ jmin=np.argmin(couts)
 print 'Trajet le plus court :' ,trajets[jmin],' km:',couts[jmin] 
 print 'Temps de calcul : ',t2-t1
 
-##### Résolution du problème par la méthode du recuit simulé #####
+##### RÃ©solution du problÃ¨me par la mÃ©thode du recuit simulÃ© #####
 print "\n ##### Resolution du probleme par la methode du recuit simule #####"
 
-#***** Paramètres du calcul *****
+#***** ParamÃ¨tres du calcul *****
 #----- Initialisation -----
 candOld=compute_new_candidate(parcours)
 coutOld=cost_function(candOld,dico)
-#----- Paramètres de l'algorithme -----
+#----- ParamÃ¨tres de l'algorithme -----
 itermax=1500
 hpar=1.0
 kpar=1
 Temp=1.0/kpar
 Temp_list=[Temp]
 print 'dstart:',coutOld
-#***** Algorithme de résolution *****
+#***** Algorithme de rÃ©solution *****
 t1=time.time()
 for ind in xrange(itermax):
     #----- Calcul d'un nouveau trajet candidat -----
     candNew=compute_new_candidate(parcours)
-    #----- Calcul de la différence de coût entre l'ancien et le nouveau trajet -----
+    #----- Calcul de la diffÃ©rence de coÃ»t entre l'ancien et le nouveau trajet -----
     coutNew=cost_function(candNew, dico)
-    #----- Si le nouveau trajet candidat est plut cher, il peut quand même -----
-    #----- être accepté avec une certaine probabilité -----
+    #----- Si le nouveau trajet candidat est plut cher, il peut quand mÃªme -----
+    #----- Ãªtre acceptÃ© avec une certaine probabilitÃ© -----
     if coutNew<=coutOld:
         candOld=candNew; coutOld=coutNew    
     else:
@@ -184,18 +182,18 @@ for ind in xrange(itermax):
         if np.exp(-deltaE/Temp)>=np.random.random():
             candOld=candNew; coutOld=coutNew
 #    print 'dist=',coutOld
-    #----- Diminution de la température -----
+    #----- Diminution de la tempÃ©rature -----
     kpar,Temp= compute_Temp(hpar,kpar,ind+2,Temp)
     Temp_list.append( Temp  )
 t2=time.time()
-#***** Résultat *****
+#***** RÃ©sultat *****
 
 
 print 'Trajet le plus court :' ,candOld ,' d:',coutOld
 print 'Temps de calcul : ',t2-t1
 
 
-#----- Profil de température -----
+#----- Profil de tempÃ©rature -----
 plt.figure()
 plt.plot(Temp_list)
 plt.xlabel('$n$')
