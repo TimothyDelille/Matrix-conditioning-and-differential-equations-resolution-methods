@@ -1,6 +1,3 @@
-"""
-Script TP descente de Newton.
-"""
 ############################
 ##### IMPORTED MODULES #####
 ############################
